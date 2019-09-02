@@ -1,5 +1,7 @@
 package com.geomark.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -14,7 +16,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 /**
- * JPA Spring Boot configuration
+ * JPA Spring Data configuration
  * 
  * @author Georgios Markakis
  *
@@ -26,7 +28,19 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class JPAConfig {
 
-	// JPA related Beans
+
+	/**
+	 * LOGGER
+	 */
+	Logger logger = LoggerFactory.getLogger(JPAConfig.class);
+
+
+	/**
+	 * JPA Entity Manager Configuration
+	 *
+	 * @param dataSource
+	 * @return
+	 */
 	@Bean
 	public EntityManagerFactory entityManagerFactory(DataSource dataSource) {
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -40,10 +54,14 @@ public class JPAConfig {
 		localContainerEntityManagerFactoryBean.setJpaProperties(jpaProperties);
 		localContainerEntityManagerFactoryBean.afterPropertiesSet();
 
+		logger.debug("JPA Properties: " + jpaProperties.toString());
+
 		return localContainerEntityManagerFactoryBean.getObject();
 	}
 
 	/**
+	 * Transaction Manager Configuration
+	 *
 	 * @param entityManagerFactory
 	 * @return
 	 */

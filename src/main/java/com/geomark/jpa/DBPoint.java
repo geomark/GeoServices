@@ -1,38 +1,40 @@
 package com.geomark.jpa;
 
+import javax.persistence.*;
+import java.math.BigInteger;
+import static javax.persistence.GenerationType.IDENTITY;
 
-import org.hibernate.annotations.Type;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
+/**
+ * JPA Entity for Point JPA Representation
+ *
+ * @author Georgios Markakis
+ */
 @Entity
 @Table(name = "POINTS_TABLE_GEO")
 public class DBPoint {
 
         @Id
-//        @Type(type="pg-uuid")
-        protected long id;
+        @GeneratedValue(strategy = IDENTITY)
+        @Column(name = "id")
+        private  BigInteger id;
 
         @Column(name = "name")
         protected String name;
 
         @Column(name = "lattitude")
-        protected double lat;
+        protected Double lat;
 
         @Column(name = "longitude")
-        protected double _long;
+        protected Double _long;
 
         @Column(name = "counter")
-        protected long counter;
+        protected Long counter;
 
         /**
          * Gets the value of the lat property.
          *
          */
-        public double getLat() {
+        public Double getLat() {
             return lat;
         }
 
@@ -40,7 +42,7 @@ public class DBPoint {
          * Sets the value of the lat property.
          *
          */
-        public void setLat(double value) {
+        public void setLat(Double value) {
             this.lat = value;
         }
 
@@ -48,7 +50,7 @@ public class DBPoint {
          * Gets the value of the long property.
          *
          */
-        public double getLong() {
+        public Double getLong() {
             return _long;
         }
 
@@ -56,7 +58,7 @@ public class DBPoint {
          * Sets the value of the long property.
          *
          */
-        public void setLong(double value) {
+        public void setLong(Double value) {
             this._long = value;
         }
 
@@ -88,7 +90,7 @@ public class DBPoint {
          * Gets the value of the counter property.
          *
          */
-        public long getCounter() {
+        public Long getCounter() {
             return counter;
         }
 
@@ -96,18 +98,21 @@ public class DBPoint {
          * Sets the value of the counter property.
          *
          */
-        public void setCounter(long value) {
+        public void setCounter(Long value) {
             this.counter = value;
         }
 
-        public long getId() {
+        public BigInteger getId() {
                 return id;
         }
 
-        public void setId(long id) {
+        public void setId(BigInteger id) {
                 this.id = id;
         }
 
+        /**
+         * @return
+         */
         @Override
         public String toString() {
                 return "DBPoint{" +

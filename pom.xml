@@ -8,8 +8,6 @@
 		<version>2.1.6.RELEASE</version>
 	</parent>
 
-
-
 	<artifactId>sample_soap_service</artifactId>
 	<groupId>com.geomark</groupId>
 	<name>Spring Boot 2 SOAP GeoService</name>
@@ -55,13 +53,6 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 		</dependency>
-
-
-
-		<!--<dependency>-->
-            <!--<groupId>com.h2database</groupId>-->
-            <!--<artifactId>h2</artifactId>-->
-        <!--</dependency>-->
 
 		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
 		<dependency>
