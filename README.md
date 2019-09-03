@@ -1,7 +1,7 @@
 # GeoServices
 Test Postgis via SOAP calls
 
-This is a sample Spring Boot application demonstrating the use of Spring Web services and Postgis.
+This is a sample Spring Boot microservice demonstrating the use of Spring Web services and Postgis.
 
 ## Installation instructions
 
