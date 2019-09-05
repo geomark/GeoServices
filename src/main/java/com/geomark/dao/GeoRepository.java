@@ -47,7 +47,6 @@ public interface GeoRepository extends Repository<DBPoint, Long> {
      *
      * @return
      */
-    @Cacheable("points")
     @Query(value = "SELECT * FROM  points_table_geo WHERE counter >= :threshold ORDER BY counter;\n",
     nativeQuery=true
     )
