@@ -10,13 +10,13 @@ import static javax.persistence.GenerationType.IDENTITY;
  * @author Georgios Markakis
  */
 @Entity
-@Table(name = "POINTS_TABLE_GEO")
+@Table(name = "points_table_geo")
 public class DBPoint {
 
         @Id
         @GeneratedValue(strategy = IDENTITY)
         @Column(name = "id")
-        private  BigInteger id;
+        private  Long id;
 
         @Column(name = "name")
         protected String name;
@@ -102,11 +102,11 @@ public class DBPoint {
             this.counter = value;
         }
 
-        public BigInteger getId() {
+        public Long getId() {
                 return id;
         }
 
-        public void setId(BigInteger id) {
+        public void setId(Long id) {
                 this.id = id;
         }
 

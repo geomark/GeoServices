@@ -22,7 +22,7 @@ public interface GeoRepository extends Repository<DBPoint, Long> {
      * @return
      */
     @Cacheable("points")
-    @Query(value = "SELECT * FROM  public.\"POINTS_TABLE_GEO\" WHERE name = :id ;",
+    @Query(value = "SELECT * FROM  points_table_geo WHERE name = :id ;",
             nativeQuery=true
     )
     Optional<DBPoint>  findPoint(@Param("id") String point);
@@ -36,7 +36,7 @@ public interface GeoRepository extends Repository<DBPoint, Long> {
      * @return
      */
     @Cacheable("points")
-    @Query(value = "SELECT * FROM  public.\"POINTS_TABLE_GEO\" ORDER BY ST_Distance(ST_MakePoint(longitude,lattitude)\\:\\:geometry, ST_MakePoint(:lon,:lat)\\:\\:geometry) LIMIT 1;\n",
+    @Query(value = "SELECT * FROM  points_table_geo ORDER BY ST_Distance(ST_MakePoint(longitude,lattitude)\\:\\:geometry, ST_MakePoint(:lon,:lat)\\:\\:geometry) LIMIT 1;\n",
             nativeQuery=true
     )
     Optional<DBPoint> findClosestNeighbour(@Param("lat") double lat,@Param("lon") double lon);
@@ -48,8 +48,8 @@ public interface GeoRepository extends Repository<DBPoint, Long> {
      * @return
      */
     @Cacheable("points")
-    @Query(value = "SELECT * FROM  public.\"POINTS_TABLE_GEO\" WHERE counter >= :threshold ORDER BY counter;\n",
-            nativeQuery=true
+    @Query(value = "SELECT * FROM  points_table_geo WHERE counter >= :threshold ORDER BY counter;\n",
+    nativeQuery=true
     )
     List<DBPoint> findmostVisited(@Param("threshold") long threshold);
 

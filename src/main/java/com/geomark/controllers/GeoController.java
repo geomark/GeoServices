@@ -88,7 +88,7 @@ public class GeoController {
     private DBPoint incrementAndSave(DBPoint point){
 
         long count = point.getCounter();
-        point.setCounter(count ++);
+        point.setCounter(++count);
 
         logger.info(point.toString());
 
